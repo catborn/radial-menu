@@ -1,0 +1,88 @@
+// Variables
+$bg-color: #000;
+$grid-color: rgba(64, 100, 255, 0.05);
+$menu-hover-transition: 0.3s ease;
+$accent-blue: rgba(138, 180, 255, 0.8);
+
+// Reset & Base styles (previous code remains the same)
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $bg-color;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(to right, $grid-color 1px, transparent 1px),
+            linear-gradient(to bottom, $grid-color 1px, transparent 1px);
+        background-size: 20px 20px;
+        pointer-events: none;
+    }
+    
+    &::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(to right, rgba(64, 100, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(64, 100, 255, 0.1) 1px, transparent 1px);
+        background-size: 100px 100px;
+        pointer-events: none;
+    }
+}
+
+#menu-container {
+    width: 50vw;
+    aspect-ratio: 1;
+    position: relative;
+    z-index: 1;
+
+    .menu-slice {
+        transition: fill $menu-hover-transition;
+        &:hover {
+            fill: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    .slice-text {
+        fill: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        font-weight: 500;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .following-border {
+        stroke: $accent-blue;
+        stroke-width: 2;
+        fill: none;
+        pointer-events: none;
+    }
+
+    .menu-text-container {
+        position: absolute;
+        pointer-events: none;
+        padding: 4px 8px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 4px;
+        text-align: center;
+        transition: transform 0.1s ease;
+    }
+}
